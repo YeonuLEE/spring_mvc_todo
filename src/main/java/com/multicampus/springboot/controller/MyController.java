@@ -25,7 +25,8 @@ public class MyController {
 
     @GetMapping("/list")
     public void list(@Valid PageRequestDTO pageRequestDTO, BindingResult bindingResult, Model model){
-        model.addAttribute("todoList",service.getList(pageRequestDTO));
+            model.addAttribute("todoList", service.getList(pageRequestDTO));
+            model.addAttribute("todoList", service.search(pageRequestDTO));
     }
 
     @GetMapping("/view")
@@ -70,11 +71,5 @@ public class MyController {
         int nResult = service.remove(tno);
         System.out.println("결과 : " + nResult);
         return "redirect:list";
-    }
-
-    @GetMapping("/search")
-    public String search(Model model, PageRequestDTO pageRequestDTO){
-        model.addAttribute("todoList", service.search(pageRequestDTO));
-        return "list";
     }
 }
