@@ -27,14 +27,7 @@ public class MyController {
     public void list(@Valid PageRequestDTO pageRequestDTO, BindingResult bindingResult, Model model){
             model.addAttribute("todoList", service.getList(pageRequestDTO));
             model.addAttribute("todoList", service.search(pageRequestDTO));
-
     }
-
-//    @RequestMapping("/todo/list")
-//    public String search(Model model, PageRequestDTO pageRequestDTO){
-//        model.addAttribute("todoList", service.search(pageRequestDTO));
-//        return "list";
-//    }
 
     @GetMapping("/view")
     public String view(Model model, @RequestParam("tno") String tno, HttpServletRequest req){
